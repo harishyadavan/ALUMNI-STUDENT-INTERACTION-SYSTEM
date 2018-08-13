@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type= "text/javascript">
+$(document).ready(function() {
+$("#sub1").click(function() {
+var fname = $("#fi1").val();
+var lname = $("#la1").val();
+var email = $("#em1").val();
+var contact = $("#co1").val();
+var usern = $("un1").val();
+var password = $("#p1").val();
+var cpassword = $("#p2").val();
+if (name == '' || email == '' || password == '' || cpassword == '' || contact = '' || usern = '' || lname= '') {
+alert("Please fill all fields...!!!!!!");
+} else if ((password.length) < 8) {
+alert("Password should atleast 8 character in length...!!!!!!");
+ else if ((contact.length) < 12) {
+alert("Contact Number should atleast 12 character in length...!!!!!!");
+} else if (!(password).match(cpassword)) {
+alert("Your passwords don't match. Try again?");
+} else {
+$.post("register2.php", {
+n1: name,
+e1: email,
+c1: contact,
+u1: usern,
+p1: password
+}, function(data) {
+if (data == 'You have Successfully Registered.....') {
+$("form")[0].reset();
+}
+alert(data);
+});
+}
+});
+});
+</script>
+</head>
+<body bgcolor="black" text="white">
+<center>
+
+<marquee direction="right"> please fill the form to register</marquee>
+
+
+<form method="POST"  name="fname" action="register2.php">
+      <table>
+<h3>REGISTER</h3>
+<tr><td><h4>Enter first name:</h4></td><td><input type="text" name="f1" id="fi1" pattern="[a-zA-Z. _]+" required></td></tr><br>
+<tr><td><h4>Enter last name:</h4></td><td><input type="text" name="l1" id="la1" pattern="[a-zA-Z. _]+" required></td></tr><br>
+<tr><td><h4>Enter D.O.B:</h4></td><td><input type="date" name="d1" required></td></tr><br>
+<tr><td><h4>Enter E-mail Id:</h4></td><td><input type="text" name="e1" id="em1" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></td></tr><br>
+<tr><td><h4>Enter contact number:</h4></td><td><input type="text" name="c1" id="co1" pattern="[0-9. _{10}]+" required></td></tr><br>
+<tr><td><h4>Enter user name:</h4></td><td><input type="text" name="u1" id="un1" pattern="[a-zA-Z. _]+" required></td></tr><br>
+<tr><td><h4>Enter password:</h4></td><td><input type="password" name="pass1" id="p1" required></td></tr><br>
+<tr><td><h4>Confirm password:</h4></td><td><input type="password" name="pass2" id="p2" required></td></tr><br>
+<tr><td><h4>Choose your profile:</h4></td><td><select>
+  <option value="Student">Student</option>
+  <option value="Alumni">Alumni</option>
+  <option value="Faculty">Faculty</option>
+  </select></td></tr><br>
+<tr><td><h4>Submit:</h4></td><td><input type="submit" value="submit" name="s1" id="sub1"></td></tr>
+</table>
+
+</form>
+</body>
+</html>
+ 
